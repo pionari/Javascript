@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>js04</title>
+    <script type="text/javascript">
+    
+      // 명시적 함수
+      function func01() {
+        alert("명시적 함수!!");
+      }
+
+      // 익명 함수
+      var func02 = function () {
+        alert("익명 함수!!");
+      };
+
+      // 리터럴 함수
+      function myLiteralPrn(literal) {
+        literal("안녕하세요, 함수입니다.");
+      }
+      
+      function func03() {
+        myLiteralPrn(function (msg) {
+          alert(msg);
+        });
+      }
+
+      // 클로저 : 외부함수 안에 있는 내부함수 (외부 함수에 접근 가능 -> 변수, 파라미터)
+      function closureTest(val) {
+        var msg = "!!!!!";
+        function addVal() {
+          alert(val + msg);
+        }
+        return addVal;
+      }
+
+      var amEdu = closureTest("Javascript");
+      //amEdu();로 실행시 closureTest(val) 함수를 호출한다
+      //파라미터가 "Javascript"이므로 val 대신 javascript가 입력
+      //Javascript !!!!!가 호출됨
+      
+
+      function pmEdu(val) {
+        closureTest(val);
+        // closureTest(val)을 실행()
+
+        // var returnVal = closureTest(val);
+        // returnVal();
+        // alert(returnVal);
+      }
+      
+      function valTest() {
+        var val = "";
+        for (var i = 0; i < arguments.length; i++) {
+          val += arguments[i] + " ";
+        }
+        alert(val);
+      }
+      
+    </script>
+  </head>
+  
+  
+  <body>
+    <h1>함수!!!!</h1>
+    <h2>함수의 종류</h2>
+    <p onclick="func01();">1. 명시적 함수</p>
+    <p onclick="func02();">2. 익명 함수</p>
+    <p onclick="func03();">3. 리터럴 함수</p>
+
+    <hr />
+
+    <h2>클로저 (함수 리턴)</h2>
+    
+    <label for="am">오전강의</label>
+    <input type="text" id="am" />
+    <input type="button" value="클릭!" onclick="amEdu();" />
+
+    <label for="pm">오후강의</label>
+    <input type="text" id="pm" />
+    <input type="button" value="클릭!" onclick="pmEdu(pm.value);" /> 
+    <!-- pm.value 는 pm에 입력된 값을 가지온 것-->
+
+    <h2 onclick="valTest('kh','정보','교육원','Qclass');">args(arguments)</h2>
+
+  </body>
+</html>

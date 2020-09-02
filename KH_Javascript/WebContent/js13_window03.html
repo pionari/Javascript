@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>중복체크</title>
+
+<script type="text/javascript">
+
+	// 이미 존재하는 아이디 
+	var ids=["khacademy","java","script"];
+	
+	// 중복확인창에서 중복확인 버튼 클릭하면
+	function confirmChk(){
+		
+		//아이디 창에서 입력한 값을 받아서
+		var id=document.getElementsByName("id")[0].value;
+		//이건 뭘까ㅡㅡ
+		var div=document.getElementsByTagName("div")[0];
+		
+		
+		if(ids.indexOf(id)!=-1){
+			div.innerHTML="<b>아이디가 존재합니다.</b>";
+		}else{
+			var userId="사용할 수 있는 아이디입니다."
+			          +"<input type='button' value='확인'"
+			          +"onclick='insertId(\""+id+"\")'>";
+			div.innerHTML=userId;          
+		}
+		
+		// 사용할 수 있는 아이디입니다. <input type = 'button' value '확인' onclick = 'insertId("id")'> 실행
+		//div 안에 
+	}
+	
+	
+	//사용할 수 있는 아이디 일때 확인 버튼 누르면
+	function insertId(id){
+		//입력한 아이디 값을 id에 전달
+		opener.document.getElementsByName("id")[0].value=id;
+		//이건 또 뭘까요 아마 패스워드 창으로 커서가 넘어가는거 같아요
+		opener.document.getElementsByName("pwd")[0].focus();
+		close();
+	}
+</script>
+
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id"/></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="중복확인" onclick="confirmChk()"/>
+				<input type="button" value="취소" onclick="self.close()"/>
+			</td>
+		</tr>
+	</table>
+	<div></div>
+
+</body>
+</html>

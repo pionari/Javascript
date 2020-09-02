@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type ="text/css">
+	img {
+		vertical-align : middle;
+		width : 300px;
+		height : 300px;
+	}
+	
+	a{
+	
+		font-size : 50pt;
+		text-decoration : none;
+	}
+
+</style>
+
+<script type ="text/javascript">
+
+	onload = function(){
+		var anchs = document.querySelectorAll("a");
+		var img = document.querySelector("img");
+		var count =1;
+		
+		//왼쪽 a태그 클릭
+		anchs[0].onclick =function(){
+			var imgAlt = img.getAttribute("alt");
+			if(imgAlt == "img01"){
+				count = 6;
+				img.setAttribute("alt", "img06");
+				img.setAttribute("src", "resources/img/img06.jpeg");
+			} else {
+				img.setAttribute("alt","img0"+(--count));
+				img.setAttribute("src","resources/img/img0"+count+".jpeg");
+			}
+		}
+		//오른쪽 a태그 클릭
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div>
+		<a href="#" id="lt">◀</a> 
+		<img alt="img01" src="resources/img/img01.jpeg"> 
+		<a href="#" id="rt">▶</a>
+	</div>
+
+
+</body>
+</html>

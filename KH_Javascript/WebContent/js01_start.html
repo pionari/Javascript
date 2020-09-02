@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js01_start</title>
+
+
+<style type="text/css">
+
+li {
+	cursor: pointer;
+}
+</style>
+
+<script type="text/javascript" src="resources/js/basic.js"></script>
+<!-- 외부 작성 방식 -->
+
+<script type="text/javascript">
+
+	function embededTest(){
+		var doc = document.getElementsByTagName("li")[1];
+		doc.style.color="red";
+		doc.innerHTML="<strong>글자가 바뀌었습니다</strong>";
+	}
+
+</script>
+
+</head>
+
+<body>
+
+	<h1>자바스크립트 작성방식 3가지</h1>
+	<ol>
+		<li onclick="alert('inline 방식으로 실행됨!');">inline 방식</li>
+		<li onclick="embededTest();">내부작성방식</li>
+		<li onclick="test();">외부작성방식(*.js)</li>
+	</ol>
+
+</body>
+</html>

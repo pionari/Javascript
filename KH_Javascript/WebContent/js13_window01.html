@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>윈도우 연습01</title>
+
+<style type="text/css">
+
+	#regist { 
+		border: 1px solid black;
+		background: pink;
+		position: absolute;
+		top: 200px;
+		left: 500px;
+		display : none;
+	}
+	
+</style>
+
+<!-- 
+	display : none;			//공간을 차지하지 않는다 (만들어지지 않은 상태)
+	visibility: hidden;		//공간을 차지하고, 보이지 않는다 (만들어져 있는 상태)
+ -->
+
+<script type="text/javascript">
+
+	<!-- 팝업창 만들기 -->
+	function openWin() {
+		var url = "js13_window02.html";
+		var title = "myframe"; 
+		//var title = "test";
+		var prop = "top=200px,left=600px,width=500px,height=500px";
+		
+		// open(파일, 이름, 옵션)
+		window.open(url, title, prop);
+	}
+
+	
+	<!-- 회원가입 버튼 클릭하면 -->
+	function registForm() {
+		
+		//rsgist라는 Id를 가진 도큐먼트(회원가입창)이 block 형태로 나타나고 배경은 gray로 변경
+		document.getElementById("regist").style.display = "block"; 
+		document.body.style.background = "gray";
+
+		
+		//btn이라는 네임을 가진 문서? (=버튼)이 사용 불가능하게 변경
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) { //for in 문 (향상된 for문)
+		//	for(var i=0;i<btns.length;i++){
+			btns[i].disabled = "disabled";
+		}
+	}
+
+	// 회원가입창에서 확인버튼 누르면
+	function closeWin() {
+		// 회원가입창이 display = "none" 사라지고 배경 다시 white로
+		document.getElementById("regist").style.display = "none";
+		document.body.style.background = "white";
+
+		// 버튼 활성화
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) {
+			btns[i].disabled = "";
+		}
+	}
+
+	<!-- id 입력창 클릭하면 -->
+	function idchk() {
+		alert("중복체크를 확인하세요");
+	}
+
+	<!-- 중복체크 버튼 누르면 -->
+	function idCheck() {
+		// open(파일, 이름, 옵션)
+		open("js13_window03.html", "", "width=300px,height=300px");
+	}
+</script>
+
+</head>
+
+<!-- 바디 -->
+<body>
+
+	<h1>window객체</h1>
+	
+	<pre>
+	프로퍼티
+	 -document
+	 -history
+	 -location
+	 -navigator
+	 -screen
+	 -frames
+	 -parent
+	 -top
+	 -self
+	메서드
+	 -alert()
+	 -confirm()
+	 -prompt()
+	 -back()
+	 -forward()
+	 -setInterval()
+	 -clearInterval()
+	 -setTimeout()
+	 -open()
+	 -close()
+	 -scroll(),scrollBy(), scrollTo() 
+	</pre>
+
+	<div id="f1">
+		<h1>팝업창 만들기</h1>
+		<button onclick="openWin()" name="btn">창열기</button>
+		
+		<hr>
+		
+		<h1>회원가입하기(div팝업창)</h1>
+		<button onclick="registForm()" name="btn">회원가입</button>
+	</div>
+
+
+	<!-- 회원가입창 -->
+	<div id="regist"> 
+		<form>
+			<table>
+				<caption>회원가입</caption>
+				<tr>
+					<td>아이디</td>
+					
+					<!-- 아이디 입력창은 readonly라서 클릭하면 idchk() 실행 -->
+					<td><input type="text" name="id" onclick="idchk()" readonly="readonly" /> 
+					<!-- 중복체크 버튼 누르면 idCheck()실행 -->
+					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<!-- 왜 checked?? 아마 중복확인에서 확인 누르면 여기로 포커스되야하니까..? -->
+					<td><input type="password" name="pwd" alt="" style="color: red;" checked="checked" /></td>
+				</tr>
+				<tr>
+					<!-- 열 확장하고 센터로 버튼 생성 -->
+					<td colspan="2" align="center"><input type="button" value="확인" onclick="closeWin()" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<br/><br/><br/>
+	<iframe name="myframe"></iframe>
+	<!-- iframe : 웹문서 안에 또 다른 웹 문서를 넣을 수 있다 -->
+
+</body>
+</html>

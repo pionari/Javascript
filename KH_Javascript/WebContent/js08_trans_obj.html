@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type ="text/javascript">
+	function numTest(val){
+		var vals = Number(val)+5;
+		alert(vals + " : " + typeof(vals));
+	}
+	
+	function intTest(val){
+		var vals = parseInt(val)+ 5;
+		alert(vals + " : " + typeof(vals));
+	}
+	
+	function floatTest(val){
+		var vals = parseFloat(val)+5;
+		alert(vals + " : " + typeof(vals));
+	}
+	
+	function evalTest(){
+		var val = document.getElementsByName("evalue")[0];
+		if(confirm("작성하신 코드가 맞습니까? -> " + val )){
+			document.getElementsByTagName("span")[0].innerHTML = "<b>계산결과 : " + eval(val.value) + "</b>";
+		}else {
+			val.value = "5 + 10";
+		}
+	}
+	
+	
+	
+</script>
+
+</head>
+<body>
+
+	<h2>1.숫자형 형변환 number() 함수</h2>
+	<p>정수 or 실수의 문자형을 숫자형으로 반환 </p>
+	<input type = "text" id = "num">
+	<button onclick = "numTest(num.value);"> 확인 </button>		
+
+	<h2>2.정수형 형 변환 parseInt() 함수</h2>
+	<p>정수 or 실수의 문자형을 정수로 반환</p>	
+	<input type = "text" id ="int"/>
+	<button onclick = "intTest(int.value);">확인</button>
+
+	<h2>3. 실수형 형 변환 parseFloat()</h2>
+	<p>실수형태 문자형을 숫자형으로 반환</p>
+	<input type = "text" id = "float">
+	<button onclick = "floatTest(float.value);"> 확인 </button>
+	
+	<h2>4. 검증함수</h2>
+	<p>문자열로 된 식을 계산</p>
+	<input type = "text" name = "evalue" placeholder = "예) 5+10"/>
+	<button onclick = "evalTest();"> 계산 </button>
+	<span></span>
+	
+	<hr/>
+	
+	
+	<h1>문제</h1>
+	<input type = "number" name = "a"/>
+	<input type = "text" list ="calllist" id ="a"/>
+	<datalist id = "calllist">
+		<option value="+"/>
+		<option value="-"/>
+		<option value="*"/>
+		<option value="/"/>
+	</datalist>
+	<input type = "number" name = "a"/>
+	<button onclick = "calc();"> = </button>
+	<span id = "result"></span>
+	
+	<script type = "text/javascript">
+	
+		function calc(){
+			//var val01 = document.getElementById("num01");
+			//var val02 = document.getElementById("num02");
+			//var opr01 = document.getElementById("opr");
+			//var temp = val01.value + opr01.value+ val02.value;
+			
+			var as = document.getElementsByName("a");
+			var temp = "";
+			for (var i = 0; i < as.length; i++){
+				temp += as[i].value;
+			}
+			
+			document.getElementById("result").innerHTML = eval(temp);
+			//문자열로 나옴...왜 그런지 알아보기
+		}
+		   
+		    
+	</script>
+	
+</body>
+</html>

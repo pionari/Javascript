@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript">
+
+	function searchPar(){
+		var child02 = document.getElementsByTagName("p")[1];
+		var div = child02.parentNode;
+		alert(div.nodeName);
+		div.style.backgroundColor="green";
+	}
+	
+	function searchChi(){
+		var div = document.getElementsByTagName("div")[0];
+		
+		var divchi = div.childNodes;
+		//alert(divchi.length);
+		//alert(divchi[4].nodeName);
+		divchi[5].style.backgroundColor="skyblue";
+	}
+	
+	function selectOne(){
+		var div = document.getElementById("one");
+		div.style.backgroundColor="yellow";
+		
+	}
+	
+	function selectTwo(){
+		var div = document.getElementById("two");
+		var divchi = div.childNodes;
+		divchi[3].style.fontSize="20px";
+		
+	}
+</script>
+</head>
+<body>
+
+	<h1>부모탐색, 자식탐색</h1>
+	<div>
+		<p>child01</p>
+		<p>child02</p>
+		<p>child03</p>
+	</div>
+	<button onclick ="searchPar();">부모탐색</button>
+	<button onclick ="searchChi();">자식탐색</button>
+	
+	<hr/>
+	
+	<h3 onclick = "selectOne();"> 1. "test01" 태그를 포함한 div태그의 배경색을 원하는 색으로 적용</h3>
+	<h3 onclick = "selectTwo();"> 2. 마지막 div태그에 포함된 test04 태그의 폰트 크기를 20pt로 적용</h3>
+	
+	<div id = "one">
+		<p>test01</p>
+		<p>test02</p>
+	</div>
+	<div id = "two">
+		<p>test03</p>
+		<p>test04</p>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>팝업창</title>
+
+<script type="text/javascript">
+
+	<!-- 전달버튼 누르면-->
+	function test(){
+		
+		<!-- 입력한 텍스트 값 받아서 -->
+		var val=document.getElementsByName("test")[0].value;
+		
+		<!-- 값 전달 .. h1이라는 태그 네임 가진곳으로.. 그게 처음 팝업창 만들기 쓰여있던 곳-->
+		opener.document.getElementsByTagName("h1")[1].innerHTML=val;
+		
+		<!-- 창닫기 -->
+		close();
+	}
+</script>
+
+</head>
+
+<body>
+
+	<input type="text" name="test"/> 
+	<input type="button" onclick="test()" value="전달"/>
+	<input type="button" onclick="self.close()" value="창닫기">
+	<!-- self.close() : 현재 떠있는 팝업창 클로즈 -->
+
+
+</body>
+</html>

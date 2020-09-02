@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type = "text/css">
+#circle{
+	display : none;
+	border : 1px solid blue;
+}
+</style>
+
+<script type="text/javascript">
+
+	function randomNum(){
+		var rnum = Math.floor(Math.random()*49);
+		document.getElementById("rnum").value = rnum;
+	}
+	
+	function randomBgColor(){
+		var rnum = function(){
+			return Math.floor(Math.random()*256);
+		}
+		document.body.style.backgroundColor = "rgb(" + rnum() + "," + rnum() + "," + rnum() + ")";
+	}
+	
+	function circleView(){
+		var rnum = Math.floor(Math.random()*200 + 10);
+		var circle = document.getElementById("circle");
+		
+		circle.style.width = rnum + "px";
+		circle.style.height = rnum + "px";
+		circle.style.borderRadius = Math.floor(rnum/2) + "px";
+		circle.style.display ="block";
+		
+	}
+	</script>
+	
+<script type="text/javascript">
+
+	function circleArea(){
+		
+		var circleWidth = document.getElementById("circle").style.width;
+		console.log(circleWidth);
+		
+		//지름
+		var r2 = circleWidth.substring(0, circleWidth.length-2);
+		console.log(r2);
+		
+		//반지름
+		var r = Math.floor(r2/2);
+		console.log(r);
+		
+		//넓이
+		var area = Math.PI * Math.pow(r,2);
+		console.log(area);
+		
+		//둘레
+		var len = Math.PI * r2;
+		
+		document.getElementById("area").innerHTML=Math.round(area);
+		document.getElementById("len").innerHTML=Math.round(len);
+	}
+	
+</script>
+</head>
+
+<body>
+
+	<h1>랜덤 숫자 생성</h1>
+	숫자 : <input type="text" id="rnum" readonly="readonly" />
+	<br/>
+	<input type="button" value="난수 발생" onclick="randomNum();" />
+	
+	<h1>랜덤으로 배경색 설정하기</h1>
+	<input type = "button" value = "랜덤 배경색" onclick ="randomBgColor()"/>
+	
+	<h1>원 만들기</h1>
+	<input type = "button" value = "원 만들기" onclick = "circleView();"/>
+	<br/><br/><br/><br/><br/>
+	<div id ="circle"></div>
+	
+	<h1>원의 넓이, 원의 둘레</h1>
+	<input type ="button" value ="원문제" onclick="circleArea();"/><br/>
+	원의 넓이 : <span id="area"></span><br/>
+	원의 둘레 : <span id ="len"></span>
+	
+</body>
+</html>

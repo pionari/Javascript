@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type = "text/css">
+
+	img, #imgView{
+		width : 300px;
+		height : 300px;
+	}
+	
+</style>
+<script type="text/javascript">
+
+	/*
+		1. name이 rdoBtn인 요소들을 가져온다
+		2. 가져온 요소들의 length만큼 for문을 돌면서,
+		   라디오 버튼이 체크되었는지 확인하고,
+		   만일 체크되었면 자신의 value값을 참조하여
+		   /resources/img/을 가지고 와서
+		3. img태그를 생성하고,
+		   src 속성을 생성해서
+		   2번에서 만든 경로를 주입해서
+		4. 화면에 출력되도록 하자.
+	*/
+
+	function createImg(){
+		
+		//1. name이 rdoBtn인 요소들을 가져온다
+		var rdos = document.getElementsByName("rdoBtn");
+		
+		//2.가져온 요소들의 length만큼 for문을 돌면서,
+		//  라디오 버튼이 체크되었는지 확인하고,
+		//  만일 체크되었면 자신의 value값을 참조하여
+		//  /resources/img/을 가지고 와서
+		
+		var src ="";
+		for (var i = 0; i < rdos.length; i++){
+			if(rdos[i.checked]){
+				src = "resources/img/" + rdos[i].value;
+			}
+		}
+		
+		
+		
+		//3. img태그를 생성하고,
+		//   src 속성을 생성해서
+		//   2번에서 만든 경로를 주입해서
+
+		
+		var img = document.createElement("img");
+		img.setAttribute("src",src);
+		
+		
+		
+		//4.
+		var div = document.getElementById("imgView");
+		var chd = document.querySelector("#imgView > img");
+		div.replaceChild(img,chd);
+		
+		}
+		
+	
+	function deleteImg(){
+		
+		document.getElementById("imgView").innerHTML = "<img src =''>";
+		
+		
+	}
+	
+	
+</script>
+</head>
+<body>
+
+	<input type ="radio" name ="rdoBtn" value ="img01.jpeg"/> 그림 1 <br/>
+	<input type ="radio" name ="rdoBtn" value ="img02.jpeg"/> 그림 2 <br/>
+	<input type ="radio" name ="rdoBtn" value ="img03.jpeg"/> 그림 3 <br/>
+	
+	<button onclick ="createImg();"> 이미지 생성하기 </button>
+	<button onclick ="deleteImg();"> 이미지 삭제하기 </button>
+	
+	<div id ="imgView"><img src=""/></div>
+	
+</body>
+</html>

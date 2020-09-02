@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function myQClass(){
+		this.name = "KH정보교육원"; // 외부에서 접근 가능
+		var name2 = "빅데이터 전문가 과정"; // 외부에서 접근 불가
+		this.getName2 = function(){
+			return name2;
+		}
+	}
+	
+	
+	var yourQClass = {
+			name : "kh정보교육원",
+			print : function(){
+				return name + "빅데이터 전문가 과정!";
+			}
+	}
+	
+	//prototype
+	myQClass.prototype.printSubjects = function(){
+		alert(this.name + " " + this.getName2() + " : java, db, ui");
+	}
+	
+	function objTest(){
+		var cls = new myQClass();
+		//alert(cls.name);
+		//alert(cls.name2); // undefined -> 정의되지 않았다 (변수 없음)
+		//alert(cls.getName2());
+		
+		//alert(yourQClass.name);
+		//alert(yourQClass.print());
+		
+		cls.printSubjects();
+	}
+	
+	
+
+</script>
+
+</head>
+<body>
+
+	<pre>
+		객체의 구성 
+		-메소드 : 기능 정의
+		-속성 : 객체 내부 데이터
+		-this : 객체 내부의 메소드나 속성을 정의할 때 사용
+		-프로토타입 : 객체의 확장
+	</pre>
+
+	<button onclick="objTest();">클릭!</button>
+
+</body>
+</html>
